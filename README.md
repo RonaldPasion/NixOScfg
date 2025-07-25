@@ -35,3 +35,4 @@ Welcome to my NixOS configuration repository! This setup defines a secure, moder
 ## Prerequisites
 
 - Generated `hardware-configuration.nix` (run `nixos-generate-config --no-filesystems --root /mnt` if needed).
+- Make SWAP file with 'btrfs filesystem mkswapfile --size 32G mnt/swap/swapfile' then 'swapon /mnt/swap/swapfile'
