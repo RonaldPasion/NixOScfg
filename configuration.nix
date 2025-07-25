@@ -15,7 +15,7 @@
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Los_Angeles";
-  i18n.defaultlocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   services.xserver = 
   { 
@@ -39,7 +39,7 @@
 
   services.libinput.enable = true;
 
-  users.user.hakkero =
+  users.users.hakkero =
   {
     isNormalUser = true;
     extraGroups = [ "wheel" "input" ];
