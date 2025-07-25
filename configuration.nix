@@ -8,8 +8,13 @@
       ./disk-config.nix
     ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot =
+  {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernelParams = [ "resume_offset=533760" ];
+    resumeDevice = "/dev/disk/by-label/nixos";
+  };
 
   networking.hostName = "NixOS";
   networking.networkmanager.enable = true;
