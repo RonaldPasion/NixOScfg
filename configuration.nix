@@ -71,9 +71,10 @@
   
   environment.systemPackages = with pkgs;
     [
-      vim
+      vim 
       wget
       git
+      eza
       brave
     ];
 
