@@ -12,6 +12,7 @@
   {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [ "resume_offset=533760" ];
     resumeDevice = "/dev/disk/by-label/nixos";
   };
@@ -22,27 +23,43 @@
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.xserver = 
-  { 
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-    xkb =
+  services =
+  {
+    xserver =
     {
-      layout = "us";
-      options = "caps:hyper"; # turn Capslock into Hyper key
+      enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+      xkb =
+      {
+        layout = "us";
+        options = "caps:hyper"; # turn Capslock into Hyper key
+      };  
+    };
+    
+    printing.enable = true;
+
+    pipewire =
+    {
+      enable = true;
+      pulse.enable = true;
+    };
+
+    libinput.enable = true;
+    
+    power-profiles-daemon.enable = false;
+    tlp =
+    {
+      enable = true;
+      settings =
+      {
+        START_CHARGE_THRESH_BAT0 = 75;
+        STOP_CHARGE_THRESH_BAT0 = 80;
+        START_CHARGE_THRESH_BAT1 = 75;
+        STOP_CHARGE_THRESH_BAT1 = 80;
+      };
     };
   };
-
-  services.printing.enable = true;
-
-  services.pipewire =
-  {
-    enable = true;
-    pulse.enable = true;
-  };
-
-  services.libinput.enable = true;
 
   users.users.hakkero =
   {
@@ -58,6 +75,8 @@
     [
       vim
       wget
+      git
+      brave
     ];
 
   system.stateVersion = "25.05";
