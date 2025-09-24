@@ -1,7 +1,7 @@
 # My NixOS Configuration
 
 Welcome to my NixOS configuration repository! This setup defines a modern, and user-friendly NixOS system with an encrypted disk, BTRFS subvolumes, and a GNOME desktop environment.
-- [x]
+* [X]
 ## Overview
 
 - **Hostname**: NixOS
